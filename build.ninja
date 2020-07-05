@@ -4,6 +4,9 @@ rule protoc
 rule gobuild
   command=go build -o $out $in
 
+rule install
+  command=mv $in /usr/local/bin/commit-career && chmod +x /usr/local/bin/commit-career
 build proto: protoc ./pb proto/commit_career.proto
 build daemon: gobuild ./daemon.go
 build client: gobuild ./main.go
+build install: install client/main
