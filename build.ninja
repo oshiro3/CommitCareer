@@ -1,0 +1,9 @@
+rule protoc
+  command=protoc --go_out=plugins=grpc:$in $out
+
+rule gobuild
+  command=go build -o $out $in
+
+build proto: protoc ./pb proto/commit_career.proto
+build daemon: gobuild ./daemon.go
+build client: gobuild ./main.go

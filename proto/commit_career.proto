@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package="proto";
+
+service CommitCareer{
+  rpc fetchBranches (FetchBranchRequest) returns (FetchBranchResponse) {};
+  rpc fetchCommits(FetchCommitsRequest) returns (FetchCommitsResponse) {};
+  rpc cherryPick(CherryPickRequest) returns (CherryPickResponse) {};
+}
+
+message FetchBranchRequest{
+  int32 limit = 1;
+}
+
+message FetchCommitsRequest {
+  string branch = 1;
+}
+
+message CherryPickRequest {
+  string Base = 1;
+  repeated string Sha = 2;
+}
+
+message FetchBranchResponse {
+  repeated string name = 1;
+}
+
+message FetchCommitsResponse {
+  message Commit {
+    string sha = 1;
+    string title= 2;
+  }
+  repeated Commit commits = 1;
+}
+
+message CherryPickResponse {
+  int32 Status = 1;
+  string Message =2;
+}
