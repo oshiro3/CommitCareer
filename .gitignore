@@ -1,1 +1,3 @@
 .ninja_log
+daemon/daemon
+./main

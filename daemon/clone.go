@@ -15,7 +15,7 @@ func Clean(path string) {
 }
 
 func Clone(repoPath string) *git.Repository {
-	clonePath := "/home/oshiro/works/testgit"
+	clonePath := "/tmp/commit_career_work"
 	err := exec.Command("/usr/bin/git", "clone", repoPath, clonePath).Run()
 	if err != nil {
 		log.Fatalf("clone err: %+v\n", err)

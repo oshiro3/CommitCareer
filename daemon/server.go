@@ -12,6 +12,8 @@ import (
 	"strings"
 )
 
+/*All RepoPath variable are static.*/
+
 type CommitCareerService struct{}
 
 func handler(w http.ResponseWriter, r *http.Request) {
